@@ -1,0 +1,8 @@
+.git
+mlruns
+mlartifacts
+mlflow.db
+notebooks
+screenshots
+tests
+__pycache__

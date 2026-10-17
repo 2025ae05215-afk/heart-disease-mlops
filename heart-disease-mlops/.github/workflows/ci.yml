@@ -1,0 +1,39 @@
+name: CI
+on:
+  push: {branches: [main]}
+  pull_request:
+jobs:
+  build-test-train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Lint
+        run: flake8 src tests scripts
+      - name: Unit tests
+        run: pytest -v --junitxml=test-results.xml
+      - name: Download data
+        run: python scripts/download_data.py
+      - name: Train model (MLflow logged)
+        run: python -m src.train
+      - name: Build Docker image
+        run: docker build -t heart-api:ci .
+      - name: Smoke test container
+        run: |
+          docker run -d -p 8000:8000 --name api heart-api:ci
+          for i in $(seq 1 20); do curl -sf localhost:8000/health && break || sleep 2; done
+          curl -sf -X POST localhost:8000/predict -H 'Content-Type: application/json' \
+            -d '{"age":63,"sex":1,"cp":3,"trestbps":145,"chol":233,"fbs":1,"restecg":0,"thalach":150,"exang":0,"oldpeak":2.3,"slope":0,"ca":0,"thal":1}'
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-artifacts
+          path: |
+            test-results.xml
+            models/
+            mlartifacts/
+            mlflow.db
