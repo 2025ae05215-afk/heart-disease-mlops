@@ -87,4 +87,4 @@ The sample is the first row of the UCI file. Inputs are validated with Pydantic 
 Small dataset (302 rows) so metrics are high-variance; one hold-out split; no calibration or fairness analysis; no data-drift monitoring. Next steps: repeated CV, probability calibration, drift alerts on input distributions, image push to a registry with automated deploy from CI.
 
 ## 13. Repository
-`<GITHUB_REPO_URL>` (code, Dockerfile, requirements, cleaned data and download script, notebooks, tests, workflow, manifests, screenshots, this report, and a short demo video of the full pipeline).
+`(https://github.com/2025ae05215-afk/heart-disease-mlops/tree/main/heart-disease-mlops)` (code, Dockerfile, requirements, cleaned data and download script, notebooks, tests, workflow, manifests, screenshots, this report, and a short demo video of the full pipeline).
