@@ -3,7 +3,8 @@ title: "MLOps Assignment 01 - Heart Disease Risk Prediction"
 subtitle: "End-to-End ML Development, CI/CD and Production Deployment"
 ---
 
-**Course:** MLOps (AIMLCZG523), BITS Pilani WILP  **Student:** Utsav  **Repo:** `<GITHUB_REPO_URL>`  **API:** `<DEPLOYED_URL or http://localhost via minikube tunnel>`
+**Course:** MLOps (AIMLCZG523), BITS Pilani WILP  **Student:** Utsav Srivastava | 2025AE05215
+**Repo:** `https://github.com/2025ae05215-afk/heart-disease-mlops/tree/main/heart-disease-mlops`  **API:** `http://localhost via minikube tunnel`
 
 ## 1. Problem and Dataset
 Binary classifier predicting presence of heart disease from 13 clinical features (Cleveland subset of the UCI Heart Disease dataset, `processed.cleveland.data`, 303 rows). The original target (0 to 4) is binarised: 0 = absent, 1 = present (any value above 0). Raw data is obtained by `scripts/download_data.py` (downloads from UCI, or parses a local copy: `python scripts/download_data.py <path>`) and cleaned by `src/data.py` into `data/heart_clean.csv`.
