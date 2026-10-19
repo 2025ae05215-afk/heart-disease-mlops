@@ -81,7 +81,7 @@ The sample is the first row of the UCI file. Inputs are validated with Pydantic 
 - **Dashboards:** `docker compose up` starts the API, Prometheus (:9090) and Grafana (:3000, datasource auto-provisioned). Panels: request rate, p95 latency, predictions per class, 5xx rate (queries in `README.md`). *(Insert screenshot: Grafana dashboard after sending some traffic.)*
 
 ## 11. Architecture
-![System architecture](screenshots/architecture.png){width=100%}
+![System architecture](screenshots/architecture.png)
 
 ## 12. Limitations and Next Steps
 Small dataset (302 rows) so metrics are high-variance; one hold-out split; no calibration or fairness analysis; no data-drift monitoring. Next steps: repeated CV, probability calibration, drift alerts on input distributions, image push to a registry with automated deploy from CI.
